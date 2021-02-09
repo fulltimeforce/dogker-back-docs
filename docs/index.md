@@ -1,37 +1,46 @@
-## Welcome to GitHub Pages
+---
+layout: default
+title: Home
+has_children: false
+nav_order: 3
+---
 
-You can use the [editor on GitHub](https://github.com/fulltimeforce/dogker-back-docs/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Dogker-back
+{: .fs-9}
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+Dogker is a real-time mobile poker game experience built on [NestJS](https://nestjs.com/) and [Socket.io](https://socket.io/).
+{: .fs-6 .fw-300 }
 
-### Markdown
+[Check out the repo](https://github.com/fulltimeforce/dogker-back){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 }
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+---
 
-```markdown
-Syntax highlighted code block
+## Getting started
 
-# Header 1
-## Header 2
-### Header 3
+### Start by installing the dependencies:
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```bash
+npm install
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Now you can run the app in development mode:
 
-### Jekyll Themes
+```bash
+npm start
+or
+npm run start:dev
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/fulltimeforce/dogker-back-docs/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### The application will run on port 5000.
 
-### Support or Contact
+### To run in production mode, first do:
 
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+```bash
+npm run build
+```
+
+### and then:
+
+```bash
+npm run start:prod
+```
