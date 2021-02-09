@@ -11,6 +11,8 @@ nav_order: 3
 Dogker is a real-time mobile poker game experience built on [NestJS](https://nestjs.com/) and [Socket.io](https://socket.io/).
 {: .fs-6 .fw-300 }
 
+[Check out the repo](https://github.com/fulltimeforce/dogker-back){: .btn .btn-primary .fs-5 .mb-4 .mb-md-0 }
+
 ---
 
 ## Getting started
