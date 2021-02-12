@@ -4,3 +4,5 @@ search-enabled: true
 aux_links:
   "Dogker-back on GitHub":
     - "//github.com/fulltimeforce/dogker-back"
+back_to_top: true
+back_to_top_text: "Back to top"
