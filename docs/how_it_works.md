@@ -58,3 +58,5 @@ Everything related to Janus and the audiobridge plugin is explained in more deta
 ## The Suggestions 
 
 The Dogker landing page includes a section where anyone is able to send a suggestion with a title and description. The REST API handles this process by storing the suggestion on a collection in the database, and also provides the functionality to list the last 10 suggestions received. All of this is defined in `suggestions.service.ts` and `suggestions.controller.ts`.
+
+---
