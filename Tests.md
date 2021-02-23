@@ -29,4 +29,4 @@ Jugador A tiene 3150 fichas, jugador B tiene 1850, jugador C tiene 800.
 Jugador A tiene 3350 fichas, Jugador B tiene 1650, Jugador C tiene 400.
 | Case | Outcome |
 | ---- | ------- |
-|C y B hacen all-in. A solo necesita apostar 1650. C tiene la mejor mano, y B tiene mejor mano que A. El outcome debería ser C=1200, B=2500 y A=1700|❌  El outcome es A=1650, B=2400, C=1800|
+|C y B hacen all-in. A solo necesita apostar 1650. C tiene la mejor mano, y B tiene mejor mano que A. El outcome debería ser C=1200, B=2500 y A=1700|❌  El outcome es C=1800, B=2400, A=1650 |
