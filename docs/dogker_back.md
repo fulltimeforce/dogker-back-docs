@@ -180,20 +180,9 @@ This method handles responses to do depending of which `action` is given. These 
 **HandRank** and **HandRankValue** are attributes from `User` class that corresponds to which combination is the best, the following picture details more about rankings that starts with **Royal Flush** as the best one.
 {: .fs-4 .no_toc }
 
-```javascript
-enum PokerHandRank {
-  ROYAL_FLUSH, // 0 
-  STRAIGHT_FLUSH, // 1 
-  FOUR_OF_A_KIND, // 2 
-  FULL_HOUSE, // 3 
-  FLUSH, // 4 
-  STRAIGHT, // 5 
-  THREE_OF_A_KIND, // 6 
-  TWO_PAIR, // 7 
-  PAIR, // 8 
-  HIGH_CARD, //9 
-}
-```
+{:refdef: style="text-align: center;"}
+![Shema](https://i.imgur.com/e1T5ZrY.png "Dogker Schema")
+{:refdef}
 
 Some highlights that need to be made when evaluating the playing cards:
 
