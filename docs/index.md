@@ -17,7 +17,13 @@ Dogker is a real-time mobile poker game experience built on [NestJS](https://nes
 
 ## Getting started
 
-### Start by installing the dependencies:
+### Start by cloning the project:
+
+```bash
+git clone https://github.com/fulltimeforce/dogker-back
+```
+
+### Once it is cloned, install the dependencies:
 
 ```bash
 npm install
@@ -27,7 +33,9 @@ npm install
 
 ```bash
 npm start
+```
 or
+```
 npm run start:dev
 ```
 

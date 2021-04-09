@@ -17,6 +17,44 @@ The backend side is mainly built on [NodeJS](https://nodejs.org/en/docs/) and [N
 1. TOC
 {:toc}
 
+## Getting started
+
+### Start by cloning the project:
+
+```bash
+git clone https://github.com/fulltimeforce/dogker-back
+```
+
+### Once it is cloned, install the dependencies:
+
+```bash
+npm install
+```
+
+### Now you can run the app in development mode:
+
+```bash
+npm start
+```
+or
+```
+npm run start:dev
+```
+
+### The application will run on port 5000.
+
+### To run in production mode, first do:
+
+```bash
+npm run build
+```
+
+### and then:
+
+```bash
+npm run start:prod
+```
+
 ## Database
 We are currently using MongoDB a document-oriented database as well as [mongoose](https://docs.nestjs.com/techniques/mongodb) from NestJS, an Object Data Modeling **(ODM)** library so that we manage our games data.
 {: .fs-4 .no_toc }
@@ -53,49 +91,51 @@ src\
 
 # In-depth explanation
 <hr style="margin: 1rem 0px;" />
-<table>
-    <thead>
-        <tr>
-            <th colspan="5">Table Cards</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center">
-              <img src="./cards/2_rojo_corazones.png" width="60" />
-            </td>
-            <td style="text-align:center">
-              <img src="./cards/3_espadas.png" width="60" />
-            </td>
-            <td style="text-align:center">
-              <img src="./cards/5_trebol.png" width="60" />
-            </td>
-            <td style="text-align:center">
-              <img src="./cards/6_espadas.png" width="60" />
-            </td>
-            <td style="text-align:center">
-              <img src="./cards/7_rojo_rombo.png" width="60" />
-            </td>
-        </tr>
-    </tbody>
-</table>
-<table class="float-left">
-    <thead>
-        <tr>
-            <th colspan="2">Player Cards</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td style="text-align:center">
-              <img src="./cards/2_rojo_corazones.png" width="60" />
-            </td>
-            <td style="text-align:center">
-              <img src="./cards/2_rojo_corazones.png" width="60" />
-            </td>
-        </tr>
-    </tbody>
-</table>
+<div class="width:50%;">
+  <table>
+      <thead>
+          <tr>
+              <th colspan="5">Table Cards</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td style="text-align:center">
+                <img src="./cards/2_rojo_corazones.png" width="60" />
+              </td>
+              <td style="text-align:center">
+                <img src="./cards/3_espadas.png" width="60" />
+              </td>
+              <td style="text-align:center">
+                <img src="./cards/5_trebol.png" width="60" />
+              </td>
+              <td style="text-align:center">
+                <img src="./cards/6_espadas.png" width="60" />
+              </td>
+              <td style="text-align:center">
+                <img src="./cards/7_rojo_rombo.png" width="60" />
+              </td>
+          </tr>
+      </tbody>
+  </table>
+  <table class="float-left">
+      <thead>
+          <tr>
+              <th colspan="2">Player Cards</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr>
+              <td style="text-align:center">
+                <img src="./cards/2_rojo_corazones.png" width="60" />
+              </td>
+              <td style="text-align:center">
+                <img src="./cards/2_rojo_corazones.png" width="60" />
+              </td>
+          </tr>
+      </tbody>
+  </table>
+</div>
 
 What we see above is the example of cards unification that are on the table with the cards' player.
 
@@ -139,7 +179,7 @@ Some highlights that need to be made when evaluating the playing cards:
 2. When a group of cards is selected (`pokerHand`), it is necessary to evaluate how good the cards are within that group, if some players have the same primary `HandRank` group, we will need to evaluate the `handRankValue`.
 3. We will begin by examining the `HandRank`, if there's a HandRank tie, the `HandRankValue` will be evaluated between these 02 players and finally find if there's a tie-breaker or not. If so, the less `HandRankValue` number will be the winner of the entire pot, otherwise, it will be divided `(pot/players.length)`.
 
-NOTE: If there's a `HandRank` tie, but also there's another smaller `HandRank`, that smaller will be considered the winner. For example:  
+**NOTE:** If there's a `HandRank` tie, but also there's another smaller `HandRank`, that smaller will be considered the winner. For example:  
 ```javascript
   {
     Name: Player 01,
@@ -171,7 +211,7 @@ The three players make an all-in when:
 - B makes an all-in when he has 1000 chips
 - C makes an all-in when he has 1000 chips
 
-This means that right now there is **4100 chips** on the table and we have to think how to split it between the players.
+This means that right now there is **2100 chips** on the table and we have to think how to split it between the players.
 
 So first thing to do, it calculate the Main and Side Pots as follows:
 
@@ -225,11 +265,11 @@ So in the end of method we managed to gain this information:
   playersId: ['1', '2']
 }
 ```
-NOTE: You can give it a try using this [calculator](https://www.pokerlistings.com/rules-for-poker-all-in-situations-poker-side-pot-calculator)
+**NOTE:** You can give it a try using this [calculator](https://www.pokerlistings.com/rules-for-poker-all-in-situations-poker-side-pot-calculator)
 
 ## Spreading money to winners explanation
 
-This explanation uses the following methods:
+This explanation uses the following methods and can be found in `nextRound()` method:
 - `getHighestRankPlayers()`: Determinate the `handRank` among the players.
 - `determinateSitePots()`: Determinate the `sidepots` based on the players' bet.
 - `determinateTieBreaker()`: Determinate who's the winner among the players, passing first the `HandRank <array>` response of `getHighestRankPlayers()` as a parameter.
@@ -297,29 +337,21 @@ In case there's more than 1 pot, it will be the proccess that we explained befor
           const isValidToGetPot = sidePot.playersId.includes(
             winnerPlayer._id.toString(),
           );
-          this.ante = sidePot.amount % winners.length;
           // Dividing the chips among the players e.g: 300 / 2 = 150 each
           const prizeChips = sidePot.amount / winnerLength;
           const integerChips = Math.floor(prizeChips);
           // If chips are 0, there's no need to sum so we skip this iteration
           if (integerChips === 0) continue;
           if (isValidToGetPot) {
-            if (this.ante) {
-              //The moment it receives the chips, it means that it is the winner.
-              winnerPlayer.chips += integerChips;
-              this.totalBetAmount -= integerChips;
-              sidePot.amount -= integerChips;
-              winnerPlayer.winner = true;
-              winnerPlayer.showingCards = true;
-            } else {
-              winnerPlayer.chips += prizeChips;
-              this.totalBetAmount -= prizeChips;
-              sidePot.amount -= prizeChips;
-              winnerPlayer.winner = true;
-              winnerPlayer.showingCards = true;
-            }
+            winnerPlayer.winner = true;
+            winnerPlayer.showingCards = true;
+            winnerPlayer.chips += integerChips;
+            this.totalBetAmount -= integerChips;
+            sidePot.amount -= integerChips;
+            //After giving the prize to the winner it is excluded
             if (winnerLength - 1 !== 0) {
               winnerLength -= 1;
+            }
             }
           }
         }
