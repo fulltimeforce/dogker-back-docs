@@ -91,51 +91,50 @@ src\
 
 # In-depth explanation
 <hr style="margin: 1rem 0px;" />
-<div class="width:50%;">
-  <table>
-      <thead>
-          <tr>
-              <th colspan="5">Table Cards</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td style="text-align:center">
-                <img src="./cards/2_rojo_corazones.png" width="60" />
-              </td>
-              <td style="text-align:center">
-                <img src="./cards/3_espadas.png" width="60" />
-              </td>
-              <td style="text-align:center">
-                <img src="./cards/5_trebol.png" width="60" />
-              </td>
-              <td style="text-align:center">
-                <img src="./cards/6_espadas.png" width="60" />
-              </td>
-              <td style="text-align:center">
-                <img src="./cards/7_rojo_rombo.png" width="60" />
-              </td>
-          </tr>
-      </tbody>
-  </table>
-  <table class="float-left">
-      <thead>
-          <tr>
-              <th colspan="2">Player Cards</th>
-          </tr>
-      </thead>
-      <tbody>
-          <tr>
-              <td style="text-align:center">
-                <img src="./cards/2_rojo_corazones.png" width="60" />
-              </td>
-              <td style="text-align:center">
-                <img src="./cards/2_rojo_corazones.png" width="60" />
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</div>
+
+<table style="background:#181818">
+  <thead>
+      <tr>
+          <th colspan="5">Table Cards</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align:center">
+            <img src="./cards/2_rojo_corazones.png" width="60" />
+          </td>
+          <td style="text-align:center">
+            <img src="./cards/3_espadas.png" width="60" />
+          </td>
+          <td style="text-align:center">
+            <img src="./cards/5_trebol.png" width="60" />
+          </td>
+          <td style="text-align:center">
+            <img src="./cards/6_espadas.png" width="60" />
+          </td>
+          <td style="text-align:center">
+            <img src="./cards/7_rojo_rombo.png" width="60" />
+          </td>
+      </tr>
+  </tbody>
+</table>
+<table class="float-left" style="background:#181818">
+    <thead>
+        <tr>
+            <th colspan="2">Player Cards</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td style="text-align:center">
+              <img src="./cards/2_rojo_corazones.png" width="60" />
+            </td>
+            <td style="text-align:center">
+              <img src="./cards/2_rojo_corazones.png" width="60" />
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 What we see above is the example of cards unification that are on the table with the cards' player.
 
@@ -166,13 +165,36 @@ Once it is ordered, it will calculate the combinations. For example:
 ### Method's Parameters:
 - `playerCards: Array<string>` - Array of player's cards without sorting.
 
+## `determinateGameState()` method
+<hr style="margin: 1rem 0px;" />
+This method handles responses to do depending of which `action` is given. These actions inside this method are: 
+- `call`: This action turns on when a player bets normally.
+- `fold`: This actions applies when a player folds, it means that loses the current round.
+- `raise`: It means that a player raise a bet.
+
+### Method's Parameters:
+- `action: string` - It can be actions coming from multiple functions. e.g: Inside `raise()` method, it calls and pass it as a parameter -> `this.determinateGameState(this.RAISE)`.
+
 ## `HandRank` and `HandRankValue` evaluation
 <hr style="margin: 1rem 0px;" />
 **HandRank** and **HandRankValue** are attributes from `User` class that corresponds to which combination is the best, the following picture details more about rankings that starts with **Royal Flush** as the best one.
 {: .fs-4 .no_toc }
-{:refdef: style="text-align: center;"}
-![Shema](https://i.imgur.com/e1T5ZrY.png "Dogker Schema")
-{:refdef}
+
+```javascript
+enum PokerHandRank {
+  ROYAL_FLUSH, // 0 
+  STRAIGHT_FLUSH, // 1 
+  FOUR_OF_A_KIND, // 2 
+  FULL_HOUSE, // 3 
+  FLUSH, // 4 
+  STRAIGHT, // 5 
+  THREE_OF_A_KIND, // 6 
+  TWO_PAIR, // 7 
+  PAIR, // 8 
+  HIGH_CARD, //9 
+}
+```
+
 Some highlights that need to be made when evaluating the playing cards:
 
 1. We need to give a rank to the group to which the cards combination belong, such as Straight or Two Pairs.
