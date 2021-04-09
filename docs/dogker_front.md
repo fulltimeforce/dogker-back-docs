@@ -33,17 +33,37 @@ flutter pub get
 ### Now you can run the app in development mode:
 
 ```bash
-flutter run --release
+flutter run --debug
 ``` 
 
 ### To run in production mode, first do:
 
 ```bash
+flutter run --release
+```
+
+### To create a build in production mode, first do:
+```bash
 flutter build appbundle --release
 ```
 
+To create a build in production mode to be uploaded to the Google Play Console you'll need the official java keystore (.jks) being used for this project. You can download it here: `https://drive.google.com/file/d/1N5pCK0K4sEDtoY9zl5ACCxzwly2Fn0kp/view?usp=sharing`
+Then, on the "android" folder make sure that the password, alias and the keystore path is set correctly.
+
+Finally for starting the build you can use either of this commands:
+### To create an AppBundle
+```bash
+flutter build appbundle --release
 ```
-src\
+
+### To create an Apk
+```bash
+flutter build apk --release
+```
+
+## Project Structure
+```
+.\
  |--FUENTES\         # Font styles applied in dogker frontend
  |--android\    # Code related to android and its configuration 
  |--assets\           # Icons, sound animations
@@ -55,12 +75,12 @@ src\
 ## Deep Links
 Deep Links are the configuration for take a user to the app when the link is clicked. All related code can be found in [`deep_link_provider.dart`](https://github.com/fulltimeforce/docker-mobile/blob/master/lib/providers/deep_link_provider.dart)
 
-NOTE: If the user don't have the Dogker app installed, it will redirect to the FTF webpage.
+**NOTE**: If the user don't have the Dogker app installed, it will redirect to the FTF webpage.
 
-## JANUS
+## Janus
 A Janus connection needs to be stablished before a player can join a voicechat room. These connection can be found in `initPlatformState()` located in [`plugin_manager.dart`](https://github.com/fulltimeforce/docker-mobile/blob/master/lib/util/plugin_manager.dart). 
 
-Once the JANUS connection is stablished, a player can Join a call with the players in the current game. The moment when player press the `Join Call` button, it validates if there's a voicechat created by another user. If no one has created a voicechat (by just clicking `Join Call`), the `_createRoom()` is executed. Otherwise, `_joinRoom()` is applied. All of these logic can be also found in [`plugin_manager.dart`](https://github.com/fulltimeforce/docker-mobile/blob/master/lib/util/plugin_manager.dart).
+Once the Janus connection is stablished, a player can Join a call with the players in the current game. The moment when player press the `Join Call` button, it validates if there's a voicechat created by another user. If no one has created a voicechat (by just clicking `Join Call`), the `_createRoom()` is executed. Otherwise, `_joinRoom()` is applied. All of these logic can be also found in [`plugin_manager.dart`](https://github.com/fulltimeforce/docker-mobile/blob/master/lib/util/plugin_manager.dart).
 
 ## Socket connection
 The socket connection starts as soon as a player joins a room. This can happen in two instances:
