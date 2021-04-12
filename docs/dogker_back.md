@@ -348,21 +348,29 @@ In case there's more than 1 pot, it will be the proccess that we explained befor
           const isValidToGetPot = sidePot.playersId.includes(
             winnerPlayer._id.toString(),
           );
-          // Dividing the chips among the players e.g: 300 / 2 = 150 each
+          this.ante = sidePot.amount % winners.length; //Returns whether it's pair or odd
           const prizeChips = sidePot.amount / winnerLength;
-          const integerChips = Math.floor(prizeChips);
+          const integerChips = Math.floor(prizeChips); //Converts to integer
           // If chips are 0, there's no need to sum so we skip this iteration
           if (integerChips === 0) continue;
           if (isValidToGetPot) {
-            winnerPlayer.winner = true;
-            winnerPlayer.showingCards = true;
-            winnerPlayer.chips += integerChips;
-            this.totalBetAmount -= integerChips;
-            sidePot.amount -= integerChips;
+            if (this.ante) { //If it's pair
+              //The moment it receives the chips, it means that it is the winner.
+              winnerPlayer.chips += integerChips;
+              this.totalBetAmount -= integerChips;
+              sidePot.amount -= integerChips;
+              winnerPlayer.winner = true;
+              winnerPlayer.showingCards = true;
+            } else { //It's odd
+              winnerPlayer.chips += prizeChips;
+              this.totalBetAmount -= prizeChips;
+              sidePot.amount -= prizeChips;
+              winnerPlayer.winner = true;
+              winnerPlayer.showingCards = true;
+            }
             //After giving the prize to the winner it is excluded
             if (winnerLength - 1 !== 0) {
               winnerLength -= 1;
-            }
             }
           }
         }
