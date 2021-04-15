@@ -8,7 +8,7 @@ parent: Dogker App
 
 # Backend
 {: .fs-8 .no_toc }
-The backend side is mainly built on [NodeJS](https://nodejs.org/en/docs/) and [NestJS](https://nestjs.com/) framework. We are also using Typescript to get a better performance.
+The backend is built on [NestJS](https://nestjs.com/) which is a framework for building efficient and scalable [Node.js](https://nodejs.org/en/docs/) server-side applications. It also allows us to use [Typescript](https://www.typescriptlang.org/) to keep our code clean and maintainable.
 {: .fs-6 .fw-300}
 
 ## Table of contents

@@ -1,6 +1,6 @@
 title: "Dogker"
 remote_theme: pmarsceill/just-the-docs
-# theme: "just-the-docs"
+theme: "just-the-docs"
 search-enabled: true
 aux_links:
   "Dogker-back on GitHub":
